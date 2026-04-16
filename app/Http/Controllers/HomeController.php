@@ -28,6 +28,7 @@ class HomeController extends Controller
         return redirect()->back();
     }
     public function view(){
-        return view('view');
+        $students = Student::all();
+        return view('view', compact('students'));
     }
     }
