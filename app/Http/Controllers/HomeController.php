@@ -31,4 +31,21 @@ class HomeController extends Controller
         $students = Student::all();
         return view('view', compact('students'));
     }
+
+    public function delete($id){
+    $student = Student::find($id);
+    // if ($student){
+    //     $student->delete();
+    // }
+    $student->delete();
+    return redirect()->back();
+    }
+    public function search(Request $request){
+        $search = $request->search;
+        $students = Student::where('name', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%')
+                    ->get();
+        return view('view', compact('students'));
+
+    }
     }

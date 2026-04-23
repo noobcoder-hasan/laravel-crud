@@ -70,6 +70,7 @@
 
     <h1>Home Page</h1>
     <p>Welcome to the home page!</p>
+    <a href="{{url('/view')}}">View Data</a>
 
     <form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data">
         @csrf
