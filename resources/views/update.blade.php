@@ -17,6 +17,7 @@
 
         <label for="image">Profile Image:</label>
         <img src="/student_images/{{$student->image}}" width="100" height="100">
+        
         <label> Enter new image</label>
         <input type="file" id="image" name="image">
 
