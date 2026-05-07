@@ -48,4 +48,26 @@ class HomeController extends Controller
         return view('view', compact('students'));
 
     }
+    public function update($id){
+        $student = Student::find($id);
+        return view('update', compact('student'));
+    }
+    
+    public function update_data(Request $request,$id){
+        $student = Student::find($id);
+        $student->name = $request->name;
+        $student->email = $request->email;
+
+        if($request->hasFile('image')){
+            $image = $request->image;
+            $imageName = time().'.'.$image->extension();
+            $request->image->move('student_images', $imageName);
+            $student->image = $imageName;
+        }
+
+        $student->save();
+
+        return redirect()->back();
+
+    }
     }
